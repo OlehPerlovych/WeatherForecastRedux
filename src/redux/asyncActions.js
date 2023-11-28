@@ -7,7 +7,6 @@ export const getWeatherAction = () => {
         getWeather().then(
             result => {
                 const resObj = JSON.parse(result);
-                console.log(resObj);
                 const newWeather = new Data(resObj);
                 dispatch(setWeather(newWeather));
             },

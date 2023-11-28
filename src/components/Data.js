@@ -5,7 +5,6 @@ export class Data {
                     this.country = resObj.sys.country || '';
                     this.pressure = resObj.main.pressure || '';
                     this.sunset = resObj.sys.sunset || '';
-                    this.message = 'Enter city name';
         }
 }
 
