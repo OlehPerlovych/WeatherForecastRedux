@@ -2,6 +2,7 @@ import './App.css';
 import Info from "./components/Info";
 import Weather from "./components/Weather";
 
+
 function App() {
   return (
     <div className="wrapper">

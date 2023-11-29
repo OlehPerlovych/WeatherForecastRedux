@@ -1,20 +1,16 @@
-import {getWeather} from "../components/api";
+import { getWeather } from "../components/api";
+import { setErrorMessage, setWeather } from "./actions";
 import {Data} from "../components/Data";
-import {setErrorMessage, setWeather} from "./actions";
-
-export const getWeatherAction = () => {
-    return dispatch => {
-        getWeather().then(
-            result => {
-                const resObj = JSON.parse(result);
-                const newWeather = new Data(resObj);
-                dispatch(setWeather(newWeather));
-            },
-            err => {
-                dispatch(setErrorMessage(err.message));
-            }
-        ).catch(err => {
-            dispatch(setErrorMessage(err.message));
-        });
-    }
-}
+export const getWeatherAction = (city) => {
+    return async (dispatch) => {
+        try {
+            const result = await getWeather(city);
+            const resObj = JSON.parse(result);
+            const newWeather = new Data(resObj);
+            dispatch(setWeather(newWeather));
+        } catch (error) {
+            dispatch(setErrorMessage(error.message || 'Something wrong...'));
+            throw error;
+        }
+    };
+};

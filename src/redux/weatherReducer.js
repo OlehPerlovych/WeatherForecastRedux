@@ -1,13 +1,13 @@
-import * as Actions from './actions';
+import {SET_ERROR_MESSAGE, SET_WEATHER} from './actions';
 
 function weatherReducer(state = {
-    weatherInfo: {},
+    weatherData: {},
     errorMessage : undefined
 }, action) {
     switch (action.type){
-        case Actions.SET_WEATHER:
-            return {...state, weatherInfo: action.payload};
-        case Actions.SET_ERROR_MESSAGE:
+        case SET_WEATHER:
+            return {...state, weatherData: action.payload};
+        case SET_ERROR_MESSAGE:
             return {...state, errorMessage: action.payload};
         default: return state;
     }
